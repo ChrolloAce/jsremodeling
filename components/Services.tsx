@@ -107,7 +107,7 @@ export default function Services() {
         {services.map((service, index) => (
           <motion.a
             key={service.id}
-            href={`#service-${service.id}`}
+            href={`/services/${service.id}`}
             className="group relative overflow-hidden rounded-2xl cursor-pointer block h-80 shadow-lg hover:shadow-2xl transition-all duration-500"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
