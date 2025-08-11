@@ -2,12 +2,28 @@ import { NextRequest, NextResponse } from 'next/server';
 import { Resend } from 'resend';
 import { ContactEmailTemplate } from '@/components/ContactEmailTemplate';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+// Initialize Resend with error handling
+const resendApiKey = process.env.RESEND_API_KEY;
+
+if (!resendApiKey) {
+  console.error('RESEND_API_KEY environment variable is not set');
+}
+
+const resend = resendApiKey ? new Resend(resendApiKey) : null;
 
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
     const { name, phone, email, zipCode, message, serviceType } = body;
+
+    // Check if Resend is properly initialized
+    if (!resend || !resendApiKey) {
+      console.error('Resend not properly configured - missing API key');
+      return NextResponse.json(
+        { error: 'Email service not configured. Please contact support.' },
+        { status: 500 }
+      );
+    }
 
     // Validate required fields
     if (!name || !phone || !email || !zipCode) {
