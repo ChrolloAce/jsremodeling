@@ -4,8 +4,10 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { ArrowRight, Play } from "lucide-react";
 import { useState, FormEvent } from "react";
+import { useRouter } from "next/navigation";
 
 export default function Hero() {
+  const router = useRouter();
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
@@ -47,6 +49,10 @@ export default function Hero() {
       if (response.ok) {
         setSubmitStatus('success');
         setFormData({ name: '', phone: '', email: '', zipCode: '' });
+        // Redirect to thank you page after successful submission
+        setTimeout(() => {
+          router.push('/thank-you');
+        }, 1500);
       } else {
         setSubmitStatus('error');
       }

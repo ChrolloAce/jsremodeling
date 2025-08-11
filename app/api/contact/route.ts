@@ -1,15 +1,24 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { Resend } from 'resend';
-import { ContactEmailTemplate } from '@/components/ContactEmailTemplate';
 
 // Initialize Resend with error handling
 const resendApiKey = process.env.RESEND_API_KEY;
 
-if (!resendApiKey) {
-  console.error('RESEND_API_KEY environment variable is not set');
-}
+// Only import and initialize Resend if API key is available
+let resend: any = null;
+let ContactEmailTemplate: any = null;
 
-const resend = resendApiKey ? new Resend(resendApiKey) : null;
+if (resendApiKey) {
+  try {
+    const { Resend } = require('resend');
+    const template = require('@/components/ContactEmailTemplate');
+    ContactEmailTemplate = template.ContactEmailTemplate;
+    resend = new Resend(resendApiKey);
+  } catch (error) {
+    console.error('Failed to initialize Resend:', error);
+  }
+} else {
+  console.warn('RESEND_API_KEY not found - email functionality disabled');
+}
 
 export async function POST(request: NextRequest) {
   try {
