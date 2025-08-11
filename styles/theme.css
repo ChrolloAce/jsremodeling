@@ -1,0 +1,119 @@
+:root{
+  --bg:#FFFFFF;
+  --surface:#F8FAFC;
+  --primary:#2563EB;
+  --primary-dark:#1D4ED8;
+  --text:#1E293B;
+  --text-muted:#64748B;
+  --line:#E2E8F0;
+  --accent:#3B82F6;
+  --success:#10B981;
+  --warning:#F59E0B;
+  --dark:#0F172A;
+  --dark-surface:#1E293B;
+
+  --radius-sm:8px; --radius-md:14px; --radius-lg:22px; --radius-pill:999px;
+
+  --shadow-sm:0 1px 3px rgba(0,0,0,.1);
+  --shadow-md:0 4px 6px -1px rgba(0,0,0,.1), 0 2px 4px -1px rgba(0,0,0,.06);
+  --shadow-glow:0 0 0 4px rgba(37,99,235,.15);
+
+  --container-max:1200px;
+  --container-gutter:24px;
+}
+
+html{ color-scheme: light; }
+body{ background:var(--bg); color:var(--text); font-family: 'Inter', ui-sans-serif, system-ui; }
+
+.container{
+  max-width:var(--container-max);
+  padding-inline:var(--container-gutter);
+  margin-inline:auto;
+}
+
+.section{ padding-block:96px; }
+
+.card{
+  background:var(--surface);
+  border:1px solid var(--line);
+  border-radius:var(--radius-lg);
+  box-shadow:var(--shadow-sm);
+}
+
+.btn{
+  display:inline-flex; align-items:center; gap:.6rem;
+  border-radius:var(--radius-pill);
+  padding:.9rem 1.2rem; font-weight:600;
+  transition:transform .15s ease, box-shadow .2s ease, background .2s ease, color .2s ease;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+}
+
+.btn-primary{ 
+  background:var(--primary); 
+  color:#0E0F12; 
+}
+
+.btn-primary:hover{ 
+  background:var(--primary-dark); 
+  box-shadow:var(--shadow-glow); 
+  transform:translateY(-1px); 
+}
+
+.btn-ghost{ 
+  background:transparent; 
+  color:var(--text); 
+  border:1px solid var(--line); 
+}
+
+.btn-ghost:hover{
+  background:var(--surface);
+  border-color:var(--primary);
+}
+
+.badge{ 
+  border-radius:var(--radius-pill); 
+  padding:.35rem .7rem; 
+  border:1px solid var(--line); 
+  color:var(--text-muted); 
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.hr{ 
+  height:1px; 
+  background:var(--line); 
+  width:100%; 
+}
+
+/* Scroll reveal animations */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.6s ease-out;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Card hover effects */
+.card-hover {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+/* Focus styles for accessibility */
+.btn:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
