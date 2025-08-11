@@ -3,8 +3,61 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { ArrowRight, Play } from "lucide-react";
+import { useState, FormEvent } from "react";
 
 export default function Hero() {
+  const [formData, setFormData] = useState({
+    name: '',
+    phone: '',
+    email: '',
+    zipCode: ''
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus('idle');
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          phone: formData.phone,
+          email: formData.email,
+          zipCode: formData.zipCode,
+          serviceType: 'Free Estimate Request',
+          message: `Free estimate request from ${formData.name} in ${formData.zipCode}`
+        }),
+      });
+
+      if (response.ok) {
+        setSubmitStatus('success');
+        setFormData({ name: '', phone: '', email: '', zipCode: '' });
+      } else {
+        setSubmitStatus('error');
+      }
+    } catch (error) {
+      console.error('Form submission error:', error);
+      setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <div className="relative min-h-screen overflow-hidden flex items-center">
       {/* Background Image with Parallax */}
@@ -96,24 +149,44 @@ export default function Hero() {
                 <p className="text-text-muted">Fill out this quick form and we'll contact you within 24 hours</p>
               </div>
               
-              <form className="space-y-6">
+              <form onSubmit={handleSubmit} className="space-y-6">
+                {submitStatus === 'success' && (
+                  <div className="p-4 bg-green-50 border border-green-200 rounded-lg">
+                    <p className="text-green-800 text-sm font-medium">✅ Thank you! We'll contact you within 24 hours.</p>
+                  </div>
+                )}
+                
+                {submitStatus === 'error' && (
+                  <div className="p-4 bg-red-50 border border-red-200 rounded-lg">
+                    <p className="text-red-800 text-sm font-medium">❌ Something went wrong. Please try again or call us directly.</p>
+                  </div>
+                )}
+
                 <div className="grid grid-cols-1 gap-4">
                   <div>
                     <label className="block text-sm font-medium text-text mb-2">Full Name *</label>
                     <input
                       type="text"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleInputChange}
                       placeholder="Your name"
                       className="w-full p-4 bg-white border border-gray-300 rounded-lg text-gray-900 placeholder-gray-500 focus:border-primary focus:outline-none transition-colors focus:ring-2 focus:ring-primary/20"
                       required
+                      disabled={isSubmitting}
                     />
                   </div>
                   <div>
                     <label className="block text-sm font-medium text-text mb-2">Phone Number *</label>
                     <input
                       type="tel"
+                      name="phone"
+                      value={formData.phone}
+                      onChange={handleInputChange}
                       placeholder="(786) 123-4567"
                       className="w-full p-4 bg-white border border-gray-300 rounded-lg text-gray-900 placeholder-gray-500 focus:border-primary focus:outline-none transition-colors focus:ring-2 focus:ring-primary/20"
                       required
+                      disabled={isSubmitting}
                     />
                   </div>
                 </div>
@@ -122,9 +195,13 @@ export default function Hero() {
                   <label className="block text-sm font-medium text-text mb-2">Email Address *</label>
                   <input
                     type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleInputChange}
                     placeholder="your@email.com"
                     className="w-full p-4 bg-white border border-gray-300 rounded-lg text-gray-900 placeholder-gray-500 focus:border-primary focus:outline-none transition-colors focus:ring-2 focus:ring-primary/20"
                     required
+                    disabled={isSubmitting}
                   />
                 </div>
                 
@@ -132,14 +209,22 @@ export default function Hero() {
                   <label className="block text-sm font-medium text-text mb-2">ZIP Code *</label>
                   <input
                     type="text"
+                    name="zipCode"
+                    value={formData.zipCode}
+                    onChange={handleInputChange}
                     placeholder="33101"
                     className="w-full p-4 bg-white border border-gray-300 rounded-lg text-gray-900 placeholder-gray-500 focus:border-primary focus:outline-none transition-colors focus:ring-2 focus:ring-primary/20"
                     required
+                    disabled={isSubmitting}
                   />
                 </div>
                 
-                <button type="submit" className="w-full btn btn-primary text-lg py-4 font-semibold">
-                  Get My Free Estimate
+                <button 
+                  type="submit" 
+                  className="w-full btn btn-primary text-lg py-4 font-semibold disabled:opacity-50 disabled:cursor-not-allowed"
+                  disabled={isSubmitting}
+                >
+                  {isSubmitting ? 'Sending...' : 'Get My Free Estimate'}
                   <ArrowRight size={20} />
                 </button>
                 
