@@ -96,7 +96,7 @@ export default function WhyChooseUs() {
           transition={{ duration: 0.8, delay: 0.2 }}
           viewport={{ once: true }}
         >
-          <div className="relative h-[600px] rounded-2xl overflow-hidden">
+          <div className="relative h-[500px] md:h-[600px] rounded-2xl overflow-hidden">
             <Image
               src="/images/commercial-painting.webp"
               alt="Commercial painting project in progress"

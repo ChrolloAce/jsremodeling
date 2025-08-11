@@ -64,9 +64,21 @@ const testimonials = [
 export default function Testimonials() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+  const [isMobile, setIsMobile] = useState(false);
   
-  // Group testimonials into sets of 3
-  const testimonialsPerSlide = 3;
+  // Check if mobile on mount and resize
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+  
+  // Group testimonials based on screen size
+  const testimonialsPerSlide = isMobile ? 1 : 3;
   const totalSlides = Math.ceil(testimonials.length / testimonialsPerSlide);
   
   // Auto-play functionality

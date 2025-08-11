@@ -26,7 +26,7 @@ export default function Hero() {
       </motion.div>
 
       {/* Content */}
-      <div className="container relative z-10 pt-20 pb-12 px-4">
+      <div className="container relative z-10 pt-24 md:pt-20 pb-12 px-4">
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           {/* Left Content */}
           <motion.div

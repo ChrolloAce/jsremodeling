@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { ArrowRight, Calendar, DollarSign } from "lucide-react";
+import { ArrowRight, Calendar } from "lucide-react";
 
 const projects = [
   {
@@ -10,7 +10,6 @@ const projects = [
     title: "Modern Miami Home Interior",
     category: "Residential",
     image: "/images/interior-painting.webp",
-    budget: "$8,500",
     duration: "1 week",
     description: "Complete interior painting transformation with premium finishes and contemporary color palette."
   },
@@ -19,7 +18,6 @@ const projects = [
     title: "Commercial Office Building",
     category: "Commercial",
     image: "/images/commercial-painting.webp",
-    budget: "$25,000",
     duration: "2 weeks",
     description: "Professional office space painting with minimal business disruption and industrial-grade materials."
   },
@@ -28,7 +26,6 @@ const projects = [
     title: "Exterior Home Makeover",
     category: "Exterior",
     image: "/images/exterior-painting.webp",
-    budget: "$12,000",
     duration: "1 week",
     description: "Complete exterior painting with weather-resistant coatings and professional surface preparation."
   }
@@ -96,15 +93,9 @@ export default function Projects() {
                 </div>
 
                 {/* Project Stats */}
-                <div className="flex items-center justify-between text-sm text-text-muted">
-                  <div className="flex items-center gap-2">
-                    <DollarSign size={16} />
-                    <span>{project.budget}</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Calendar size={16} />
-                    <span>{project.duration}</span>
-                  </div>
+                <div className="flex items-center gap-2 text-sm text-text-muted">
+                  <Calendar size={16} />
+                  <span>{project.duration}</span>
                 </div>
 
                 {/* View Details Link */}
