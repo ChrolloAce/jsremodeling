@@ -54,6 +54,9 @@ export default function Hero() {
           router.push('/thank-you');
         }, 1500);
       } else {
+        console.error('Form submission failed:', response.status, response.statusText);
+        const errorData = await response.json();
+        console.error('Error details:', errorData);
         setSubmitStatus('error');
       }
     } catch (error) {

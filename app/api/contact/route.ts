@@ -27,10 +27,27 @@ export async function POST(request: NextRequest) {
 
     // Check if Resend is properly initialized
     if (!resend || !resendApiKey) {
-      console.error('Resend not properly configured - missing API key');
+      console.warn('Resend not properly configured - missing API key, but accepting form submission');
+      
+      // Log the form data for debugging
+      console.log('Form submission received (no email sent):', {
+        name,
+        phone,
+        email,
+        zipCode,
+        serviceType,
+        message,
+        timestamp: new Date().toISOString()
+      });
+      
+      // Return success even without email
       return NextResponse.json(
-        { error: 'Email service not configured. Please contact support.' },
-        { status: 500 }
+        { 
+          success: true, 
+          message: 'Form submitted successfully (email service temporarily unavailable)',
+          warning: 'Email not sent - please contact directly at (786) 298-1846'
+        },
+        { status: 200 }
       );
     }
 
@@ -51,9 +68,9 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Send email using Resend
+    // Send email using Resend (using onboarding@resend.dev for testing)
     const { data, error } = await resend.emails.send({
-      from: 'J&S Painters Website <noreply@jspainters.com>',
+      from: 'J&S Painters Website <onboarding@resend.dev>',
       to: ['ernesto@maktubtechnologies.com'],
       subject: `🎨 New Lead: ${name} - ${serviceType || 'General Inquiry'}`,
       react: ContactEmailTemplate({
