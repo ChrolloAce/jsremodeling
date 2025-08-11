@@ -11,7 +11,7 @@ import Blog from "@/components/Blog";
 import CTA from "@/components/CTA";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
-import StatBar from "@/components/StatBar";
+
 
 export default function HomePage() {
   return (
@@ -28,7 +28,6 @@ export default function HomePage() {
         <Section id="process">
           <Process />
         </Section>
-        <StatBar />
         <Section id="projects">
           <Projects />
         </Section>

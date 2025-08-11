@@ -26,8 +26,8 @@ export default function Hero() {
       </motion.div>
 
       {/* Content */}
-      <div className="container relative z-10 pt-24 pb-12">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+      <div className="container relative z-10 pt-20 pb-12 px-4">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           {/* Left Content */}
           <motion.div
             className="space-y-8 max-w-2xl"
@@ -45,7 +45,7 @@ export default function Hero() {
             </motion.div>
 
             <motion.h1
-              className="text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight text-white"
+              className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold leading-tight text-white"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.3 }}
@@ -56,7 +56,7 @@ export default function Hero() {
             </motion.h1>
 
             <motion.p
-              className="text-lg md:text-xl text-gray-200 leading-relaxed max-w-2xl"
+              className="text-base md:text-lg lg:text-xl text-gray-200 leading-relaxed max-w-2xl"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.5 }}
@@ -85,7 +85,7 @@ export default function Hero() {
 
           {/* Right Content - Lead Form */}
           <motion.div
-            className="lg:justify-self-end w-full max-w-lg"
+            className="lg:justify-self-end w-full max-w-lg mx-auto lg:mx-0"
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
@@ -97,7 +97,7 @@ export default function Hero() {
               </div>
               
               <form className="space-y-6">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 gap-4">
                   <div>
                     <label className="block text-sm font-medium text-text mb-2">Full Name *</label>
                     <input

@@ -52,7 +52,7 @@ body{ background:var(--bg); color:var(--text); font-family: 'Inter', ui-sans-ser
 
 .btn-primary{ 
   background:var(--primary); 
-  color:#0E0F12; 
+  color:#FFFFFF; 
 }
 
 .btn-primary:hover{ 

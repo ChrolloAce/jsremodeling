@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { Check, ArrowRight } from "lucide-react";
@@ -83,8 +82,6 @@ const services: Service[] = [
 ];
 
 export default function Services() {
-  const [activeService, setActiveService] = useState(services[0]);
-
   return (
     <div className="space-y-16">
       {/* Section Header */}
@@ -105,81 +102,74 @@ export default function Services() {
         </p>
       </motion.div>
 
-      {/* Services Content */}
-      <div className="grid lg:grid-cols-2 gap-12 items-start">
-        {/* Service Selector */}
-        <motion.div
-          className="space-y-4"
-          initial={{ opacity: 0, x: -30 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          viewport={{ once: true }}
-        >
-          {services.map((service, index) => (
-            <button
-              key={service.id}
-              className={`w-full text-left p-4 rounded-lg border transition-all ${
-                activeService.id === service.id
-                  ? "bg-surface border-primary text-text"
-                  : "bg-transparent border-line text-text-muted hover:border-primary/50 hover:text-text"
-              }`}
-              onClick={() => setActiveService(service)}
-            >
-              <div className="flex items-center justify-between">
-                <span className="font-semibold">{service.name}</span>
-                <span className="text-2xl font-bold text-primary opacity-50">
+      {/* Services Grid */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {services.map((service, index) => (
+          <motion.div
+            key={service.id}
+            className="group relative overflow-hidden rounded-2xl bg-white shadow-lg hover:shadow-xl transition-all duration-500"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: index * 0.1 }}
+            viewport={{ once: true }}
+          >
+            {/* Shine Effect */}
+            <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700">
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent transform -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out" />
+            </div>
+
+            {/* Service Image */}
+            <div className="relative h-48 overflow-hidden">
+              <Image
+                src={service.image}
+                alt={service.name}
+                fill
+                className="object-cover group-hover:scale-110 transition-transform duration-500"
+                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
+              
+              {/* Service Number */}
+              <div className="absolute top-4 right-4 w-10 h-10 bg-primary rounded-full flex items-center justify-center">
+                <span className="text-white font-bold text-sm">
                   {String(index + 1).padStart(2, '0')}
                 </span>
               </div>
-            </button>
-          ))}
-        </motion.div>
-
-        {/* Active Service Details */}
-        <motion.div
-          className="card p-8 card-hover"
-          key={activeService.id}
-          initial={{ opacity: 0, x: 30 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.4 }}
-        >
-          <div className="relative h-64 mb-6 rounded-lg overflow-hidden">
-            <Image
-              src={activeService.image}
-              alt={activeService.name}
-              fill
-              className="object-cover"
-              sizes="(max-width: 768px) 100vw, 50vw"
-            />
-          </div>
-
-          <div className="space-y-6">
-            <div>
-              <h3 className="text-2xl font-bold text-text mb-3">
-                {activeService.name}
-              </h3>
-              <p className="text-text-muted leading-relaxed">
-                {activeService.description}
-              </p>
             </div>
 
-            <div className="space-y-3">
-              {activeService.features.map((feature, index) => (
-                <div key={index} className="flex items-center gap-3">
-                  <div className="w-5 h-5 bg-primary/20 rounded-full flex items-center justify-center">
-                    <Check size={14} className="text-primary" />
+            {/* Service Content */}
+            <div className="p-6 space-y-4">
+              <div>
+                <h3 className="text-xl font-bold text-gray-900 group-hover:text-primary transition-colors duration-300">
+                  {service.name}
+                </h3>
+                <p className="text-gray-600 text-sm mt-2 leading-relaxed">
+                  {service.description}
+                </p>
+              </div>
+
+              {/* Features */}
+              <div className="space-y-2">
+                {service.features.map((feature, featureIndex) => (
+                  <div key={featureIndex} className="flex items-center gap-2">
+                    <div className="w-4 h-4 bg-primary/10 rounded-full flex items-center justify-center">
+                      <Check size={10} className="text-primary" />
+                    </div>
+                    <span className="text-gray-700 text-sm">{feature}</span>
                   </div>
-                  <span className="text-text">{feature}</span>
-                </div>
-              ))}
-            </div>
+                ))}
+              </div>
 
-            <button className="btn btn-primary group">
-              More Details
-              <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-            </button>
-          </div>
-        </motion.div>
+              {/* CTA Button */}
+              <div className="pt-4">
+                <button className="w-full btn btn-primary group/btn text-sm">
+                  Learn More
+                  <ArrowRight size={14} className="group-hover/btn:translate-x-1 transition-transform" />
+                </button>
+              </div>
+            </div>
+          </motion.div>
+        ))}
       </div>
     </div>
   );
