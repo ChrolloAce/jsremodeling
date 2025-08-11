@@ -22,7 +22,7 @@ export default function Hero() {
           priority
           sizes="100vw"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-dark/90 via-dark/70 to-dark/30" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/95 via-black/80 via-black/60 to-black/40" />
       </motion.div>
 
       {/* Content */}
