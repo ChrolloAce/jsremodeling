@@ -139,18 +139,18 @@ export default function Services() {
             </div>
 
             {/* Service Content */}
-            <div className="absolute inset-0 flex flex-col justify-between p-6 text-white">
+            <div className="absolute inset-0 flex flex-col justify-end p-6 text-white">
               {/* Service Name */}
-              <div className="flex-1 flex items-center">
+              <div className="space-y-4">
                 <h3 className="text-3xl font-bold group-hover:text-primary transition-colors duration-300">
                   {service.name}
                 </h3>
-              </div>
 
-              {/* Learn More Indicator */}
-              <div className="flex items-center gap-2 text-primary font-semibold group-hover:gap-3 transition-all duration-300">
-                <span>Learn More</span>
-                <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+                {/* Learn More Indicator */}
+                <div className="flex items-center gap-2 text-primary font-semibold group-hover:gap-3 transition-all duration-300">
+                  <span>Learn More</span>
+                  <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+                </div>
               </div>
             </div>
           </motion.a>

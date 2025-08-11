@@ -10,7 +10,7 @@ const testimonials = [
     name: "Maria Rodriguez",
     role: "Homeowner",
     location: "Coral Gables, FL",
-    quote: "J&S Painters transformed our home with beautiful interior painting. Their attention to detail and professional service exceeded our expectations. Highly recommend!",
+    quote: "J&S Painters transformed our home with beautiful interior painting. Their attention to detail and professional service exceeded our expectations.",
     rating: 5,
     date: "2 months ago"
   },
@@ -19,7 +19,7 @@ const testimonials = [
     name: "Carlos Mendez",
     role: "Property Manager",
     location: "Miami, FL",
-    quote: "We use J&S for all our rental property painting needs. They're reliable, affordable, and always deliver quality work on time. Great communication throughout the process.",
+    quote: "We use J&S for all our rental property painting needs. They're reliable, affordable, and always deliver quality work on time.",
     rating: 5,
     date: "1 month ago"
   },
@@ -28,7 +28,7 @@ const testimonials = [
     name: "Lisa Garcia",
     role: "Business Owner",
     location: "Downtown Miami, FL",
-    quote: "Our office painting project was completed with minimal disruption to our business. The team was professional, clean, and the results look amazing. Thank you J&S!",
+    quote: "Our office painting project was completed with minimal disruption to our business. The team was professional and results look amazing.",
     rating: 5,
     date: "3 weeks ago"
   },
@@ -37,37 +37,59 @@ const testimonials = [
     name: "Roberto Silva",
     role: "Homeowner",
     location: "Doral, FL",
-    quote: "Excellent exterior painting service! J&S helped us choose the perfect colors and the quality of work is outstanding. Our home looks brand new. Worth every penny!",
+    quote: "Excellent exterior painting service! J&S helped us choose the perfect colors and the quality of work is outstanding. Our home looks brand new.",
     rating: 5,
     date: "1 week ago"
+  },
+  {
+    id: 5,
+    name: "Ana Martinez",
+    role: "Homeowner",
+    location: "Brickell, FL",
+    quote: "Professional cabinet painting that completely transformed our kitchen. The finish is flawless and the team was incredibly respectful of our home.",
+    rating: 5,
+    date: "2 weeks ago"
+  },
+  {
+    id: 6,
+    name: "David Chen",
+    role: "Restaurant Owner",
+    location: "South Beach, FL",
+    quote: "J&S painted our restaurant during renovation. They worked around our schedule and delivered exceptional commercial painting results on time.",
+    rating: 5,
+    date: "1 month ago"
   }
 ];
 
 export default function Testimonials() {
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [currentSlide, setCurrentSlide] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
-
+  
+  // Group testimonials into sets of 3
+  const testimonialsPerSlide = 3;
+  const totalSlides = Math.ceil(testimonials.length / testimonialsPerSlide);
+  
   // Auto-play functionality
   useEffect(() => {
     if (!isAutoPlaying) return;
 
     const interval = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % testimonials.length);
-    }, 5000);
+      setCurrentSlide((prev) => (prev + 1) % totalSlides);
+    }, 6000);
 
     return () => clearInterval(interval);
-  }, [isAutoPlaying]);
+  }, [isAutoPlaying, totalSlides]);
 
-  const nextTestimonial = () => {
-    setCurrentIndex((prev) => (prev + 1) % testimonials.length);
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % totalSlides);
   };
 
-  const prevTestimonial = () => {
-    setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + totalSlides) % totalSlides);
   };
 
   const goToSlide = (index: number) => {
-    setCurrentIndex(index);
+    setCurrentSlide(index);
   };
 
   return (
@@ -88,101 +110,117 @@ export default function Testimonials() {
         </p>
       </motion.div>
 
-      {/* Testimonials Carousel */}
+      {/* Testimonials Grid Slider */}
       <div 
-        className="relative max-w-4xl mx-auto"
+        className="relative container"
         onMouseEnter={() => setIsAutoPlaying(false)}
         onMouseLeave={() => setIsAutoPlaying(true)}
       >
         <div className="overflow-hidden">
           <AnimatePresence mode="wait">
             <motion.div
-              key={currentIndex}
-              className="card p-8 md:p-12"
+              key={currentSlide}
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
               initial={{ opacity: 0, x: 100 }}
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -100 }}
               transition={{ duration: 0.5 }}
             >
-              <div className="text-center space-y-8">
-                {/* Quote Icon */}
-                <div className="mx-auto w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center">
-                  <Quote size={24} className="text-primary" />
-                </div>
-
-                {/* Stars */}
-                <div className="flex justify-center gap-1">
-                  {Array.from({ length: testimonials[currentIndex].rating }).map((_, i) => (
-                    <Star key={i} size={20} className="text-primary fill-current" />
-                  ))}
-                </div>
-
-                {/* Quote */}
-                <blockquote className="text-xl md:text-2xl text-text leading-relaxed font-medium">
-                  "{testimonials[currentIndex].quote}"
-                </blockquote>
-
-                {/* Author & Google Badge */}
-                <div className="space-y-4">
-                  <div className="text-center">
-                    <div className="font-bold text-text text-lg">
-                      {testimonials[currentIndex].name}
+              {testimonials
+                .slice(currentSlide * testimonialsPerSlide, (currentSlide + 1) * testimonialsPerSlide)
+                .map((testimonial, index) => (
+                  <motion.div
+                    key={testimonial.id}
+                    className="card p-6 space-y-4 h-full flex flex-col"
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: index * 0.1 }}
+                  >
+                    {/* Quote Icon */}
+                    <div className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center">
+                      <Quote size={16} className="text-primary" />
                     </div>
-                    <div className="text-text-muted text-sm">
-                      {testimonials[currentIndex].role} • {testimonials[currentIndex].location}
+
+                    {/* Stars */}
+                    <div className="flex gap-1">
+                      {Array.from({ length: testimonial.rating }).map((_, i) => (
+                        <Star key={i} size={16} className="text-primary fill-current" />
+                      ))}
                     </div>
-                    <div className="text-text-muted text-xs mt-1">
-                      {testimonials[currentIndex].date}
-                    </div>
-                  </div>
-                  
-                  {/* Google Badge */}
-                  <div className="flex items-center justify-center gap-2 text-sm text-text-muted">
-                    <div className="flex items-center gap-1">
-                      <div className="w-4 h-4 bg-blue-500 rounded-sm flex items-center justify-center">
-                        <span className="text-white text-xs font-bold">G</span>
+
+                    {/* Quote */}
+                    <blockquote className="text-text leading-relaxed flex-1">
+                      "{testimonial.quote}"
+                    </blockquote>
+
+                    {/* Author & Google Badge */}
+                    <div className="space-y-3 pt-4 border-t border-line">
+                      <div>
+                        <div className="font-bold text-text">
+                          {testimonial.name}
+                        </div>
+                        <div className="text-text-muted text-sm">
+                          {testimonial.role} • {testimonial.location}
+                        </div>
+                        <div className="text-text-muted text-xs mt-1">
+                          {testimonial.date}
+                        </div>
                       </div>
-                      <span>Google Review</span>
+                      
+                      {/* Google Badge */}
+                      <div className="flex items-center gap-2 text-sm text-text-muted">
+                        <div className="flex items-center gap-1">
+                          <div className="w-4 h-4 bg-blue-500 rounded-sm flex items-center justify-center">
+                            <span className="text-white text-xs font-bold">G</span>
+                          </div>
+                          <span>Google Review</span>
+                        </div>
+                        <span>•</span>
+                        <span>Verified</span>
+                      </div>
                     </div>
-                    <span>•</span>
-                    <span>Verified</span>
-                  </div>
-                </div>
-              </div>
+                  </motion.div>
+                ))}
             </motion.div>
           </AnimatePresence>
         </div>
 
         {/* Navigation Arrows */}
-        <button
-          onClick={prevTestimonial}
-          className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-surface border border-line rounded-full flex items-center justify-center hover:border-primary hover:bg-primary/10 transition-colors"
-          aria-label="Previous testimonial"
-        >
-          <ChevronLeft size={20} className="text-text" />
-        </button>
+        {totalSlides > 1 && (
+          <>
+            <button
+              onClick={prevSlide}
+              className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-surface border border-line rounded-full flex items-center justify-center hover:border-primary hover:bg-primary/10 transition-colors z-10"
+              aria-label="Previous slide"
+            >
+              <ChevronLeft size={20} className="text-text" />
+            </button>
 
-        <button
-          onClick={nextTestimonial}
-          className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-surface border border-line rounded-full flex items-center justify-center hover:border-primary hover:bg-primary/10 transition-colors"
-          aria-label="Next testimonial"
-        >
-          <ChevronRight size={20} className="text-text" />
-        </button>
+            <button
+              onClick={nextSlide}
+              className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-surface border border-line rounded-full flex items-center justify-center hover:border-primary hover:bg-primary/10 transition-colors z-10"
+              aria-label="Next slide"
+            >
+              <ChevronRight size={20} className="text-text" />
+            </button>
+          </>
+        )}
 
         {/* Dots Indicator */}
-        <div className="flex justify-center gap-2 mt-8">
-          {testimonials.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => goToSlide(index)}
-              className={`w-3 h-3 rounded-full transition-colors ${
-                index === currentIndex ? "bg-primary" : "bg-line hover:bg-text-muted"
-              }`}
-              aria-label={`Go to testimonial ${index + 1}`}
-            />
-          ))}
-        </div>
+        {totalSlides > 1 && (
+          <div className="flex justify-center gap-2 mt-8">
+            {Array.from({ length: totalSlides }).map((_, index) => (
+              <button
+                key={index}
+                onClick={() => goToSlide(index)}
+                className={`w-3 h-3 rounded-full transition-colors ${
+                  index === currentSlide ? "bg-primary" : "bg-line hover:bg-text-muted"
+                }`}
+                aria-label={`Go to slide ${index + 1}`}
+              />
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );

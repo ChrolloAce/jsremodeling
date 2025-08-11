@@ -7,7 +7,6 @@ import Process from "@/components/Process";
 import Projects from "@/components/Projects";
 import Testimonials from "@/components/Testimonials";
 
-import Blog from "@/components/Blog";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 
@@ -32,9 +31,6 @@ export default function HomePage() {
         </Section>
         <Section id="testimonials">
           <Testimonials />
-        </Section>
-        <Section id="blog">
-          <Blog />
         </Section>
         <Section id="contact">
           <Contact />
