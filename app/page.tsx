@@ -8,7 +8,6 @@ import Projects from "@/components/Projects";
 import Testimonials from "@/components/Testimonials";
 
 import Blog from "@/components/Blog";
-import CTA from "@/components/CTA";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 
@@ -37,7 +36,6 @@ export default function HomePage() {
         <Section id="blog">
           <Blog />
         </Section>
-        <CTA />
         <Section id="contact">
           <Contact />
         </Section>

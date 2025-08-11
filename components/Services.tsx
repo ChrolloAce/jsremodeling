@@ -139,30 +139,18 @@ export default function Services() {
             </div>
 
             {/* Service Content */}
-            <div className="absolute inset-0 flex flex-col justify-end p-6 text-white">
-              <div className="space-y-3">
-                <h3 className="text-2xl font-bold group-hover:text-primary transition-colors duration-300">
+            <div className="absolute inset-0 flex flex-col justify-between p-6 text-white">
+              {/* Service Name */}
+              <div className="flex-1 flex items-center">
+                <h3 className="text-3xl font-bold group-hover:text-primary transition-colors duration-300">
                   {service.name}
                 </h3>
-                <p className="text-gray-200 leading-relaxed opacity-90 group-hover:opacity-100 transition-opacity duration-300">
-                  {service.description}
-                </p>
-                
-                {/* Features */}
-                <div className="space-y-1 opacity-80 group-hover:opacity-100 transition-opacity duration-300">
-                  {service.features.slice(0, 2).map((feature, featureIndex) => (
-                    <div key={featureIndex} className="flex items-center gap-2 text-sm">
-                      <div className="w-1.5 h-1.5 bg-primary rounded-full"></div>
-                      <span className="text-gray-300">{feature}</span>
-                    </div>
-                  ))}
-                </div>
+              </div>
 
-                {/* Learn More Indicator */}
-                <div className="flex items-center gap-2 text-primary font-semibold text-sm mt-4 group-hover:gap-3 transition-all duration-300">
-                  <span>Learn More</span>
-                  <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-                </div>
+              {/* Learn More Indicator */}
+              <div className="flex items-center gap-2 text-primary font-semibold group-hover:gap-3 transition-all duration-300">
+                <span>Learn More</span>
+                <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
               </div>
             </div>
           </motion.a>

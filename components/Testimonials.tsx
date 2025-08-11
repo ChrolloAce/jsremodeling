@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight, Star, Quote } from "lucide-react";
 
@@ -10,37 +9,37 @@ const testimonials = [
     id: 1,
     name: "Maria Rodriguez",
     role: "Homeowner",
-    company: "Coral Gables Resident",
-    image: "/images/team-painter.webp",
+    location: "Coral Gables, FL",
     quote: "J&S Painters transformed our home with beautiful interior painting. Their attention to detail and professional service exceeded our expectations. Highly recommend!",
-    rating: 5
+    rating: 5,
+    date: "2 months ago"
   },
   {
     id: 2,
     name: "Carlos Mendez",
     role: "Property Manager",
-    company: "Miami Properties LLC",
-    image: "/images/team-painter.webp",
+    location: "Miami, FL",
     quote: "We use J&S for all our rental property painting needs. They're reliable, affordable, and always deliver quality work on time. Great communication throughout the process.",
-    rating: 5
+    rating: 5,
+    date: "1 month ago"
   },
   {
     id: 3,
     name: "Lisa Garcia",
     role: "Business Owner",
-    company: "Downtown Miami Office",
-    image: "/images/team-painter.webp",
+    location: "Downtown Miami, FL",
     quote: "Our office painting project was completed with minimal disruption to our business. The team was professional, clean, and the results look amazing. Thank you J&S!",
-    rating: 5
+    rating: 5,
+    date: "3 weeks ago"
   },
   {
     id: 4,
     name: "Roberto Silva",
     role: "Homeowner",
-    company: "Doral Resident",
-    image: "/images/team-painter.webp",
+    location: "Doral, FL",
     quote: "Excellent exterior painting service! J&S helped us choose the perfect colors and the quality of work is outstanding. Our home looks brand new. Worth every penny!",
-    rating: 5
+    rating: 5,
+    date: "1 week ago"
   }
 ];
 
@@ -123,27 +122,30 @@ export default function Testimonials() {
                   "{testimonials[currentIndex].quote}"
                 </blockquote>
 
-                {/* Author */}
-                <div className="flex items-center justify-center gap-4">
-                  <div className="relative w-16 h-16 rounded-full overflow-hidden">
-                    <Image
-                      src={testimonials[currentIndex].image}
-                      alt={testimonials[currentIndex].name}
-                      fill
-                      className="object-cover"
-                      sizes="64px"
-                    />
-                  </div>
-                  <div className="text-left">
-                    <div className="font-bold text-text">
+                {/* Author & Google Badge */}
+                <div className="space-y-4">
+                  <div className="text-center">
+                    <div className="font-bold text-text text-lg">
                       {testimonials[currentIndex].name}
                     </div>
                     <div className="text-text-muted text-sm">
-                      {testimonials[currentIndex].role}
+                      {testimonials[currentIndex].role} • {testimonials[currentIndex].location}
                     </div>
-                    <div className="text-primary text-sm font-medium">
-                      {testimonials[currentIndex].company}
+                    <div className="text-text-muted text-xs mt-1">
+                      {testimonials[currentIndex].date}
                     </div>
+                  </div>
+                  
+                  {/* Google Badge */}
+                  <div className="flex items-center justify-center gap-2 text-sm text-text-muted">
+                    <div className="flex items-center gap-1">
+                      <div className="w-4 h-4 bg-blue-500 rounded-sm flex items-center justify-center">
+                        <span className="text-white text-xs font-bold">G</span>
+                      </div>
+                      <span>Google Review</span>
+                    </div>
+                    <span>•</span>
+                    <span>Verified</span>
                   </div>
                 </div>
               </div>

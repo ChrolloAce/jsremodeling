@@ -51,10 +51,11 @@ export default function Process() {
 
       {/* Process Steps */}
       <div className="relative">
-        {/* Timeline Line */}
-        <div className="hidden lg:block absolute top-1/2 left-0 right-0 h-0.5 bg-gray-200 -translate-y-1/2" />
+        {/* Timeline Line - positioned to align with icon centers */}
+        <div className="hidden lg:block absolute left-0 right-0 h-0.5 bg-gray-200" style={{ top: '50px' }} />
         <motion.div
-          className="hidden lg:block absolute top-1/2 left-0 h-0.5 bg-primary -translate-y-1/2"
+          className="hidden lg:block absolute left-0 h-0.5 bg-primary"
+          style={{ top: '50px' }}
           initial={{ width: 0 }}
           whileInView={{ width: "100%" }}
           transition={{ duration: 2, delay: 0.5 }}
