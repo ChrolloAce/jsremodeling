@@ -173,30 +173,6 @@ export default function Contact() {
           viewport={{ once: true }}
         >
           <div className="space-y-6">
-            <div className="bg-primary/5 border border-primary/20 rounded-lg p-6">
-              <h3 className="text-xl font-bold text-text mb-3">Why Choose J&S Painters?</h3>
-              <ul className="space-y-2 text-text-muted">
-                <li>✓ Licensed & insured professionals</li>
-                <li>✓ Free color consultation</li>
-                <li>✓ Quality materials & workmanship</li>
-                <li>✓ Competitive pricing</li>
-                <li>✓ Serving Miami-Dade County</li>
-              </ul>
-            </div>
-            <div className="flex items-start gap-4">
-              <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                <MapPin size={20} className="text-primary" />
-              </div>
-              <div>
-                <h3 className="font-semibold text-text mb-2">Our Service Area</h3>
-                <p className="text-text-muted">
-                  Miami-Dade County<br />
-                  Miami, FL<br />
-                  United States
-                </p>
-              </div>
-            </div>
-
             <div className="flex items-start gap-4">
               <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
                 <Phone size={20} className="text-primary" />

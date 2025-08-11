@@ -76,7 +76,7 @@ export default function Hero() {
                 Request a Quote
                 <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
               </a>
-              <a href="#projects" className="btn btn-ghost group">
+              <a href="#projects" className="btn btn-ghost group text-white border-white/30 hover:bg-white/10 hover:border-white">
                 <Play size={18} />
                 View Projects
               </a>
