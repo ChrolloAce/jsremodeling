@@ -42,14 +42,15 @@ export default function Footer() {
         <div className="grid lg:grid-cols-5 gap-12">
           {/* Company Info */}
           <div className="lg:col-span-2 space-y-6">
-            <div className="flex items-center">
+            <div className="flex items-center gap-4">
               <Image
                 src="/images/logo.png"
                 alt="J&S Painters Logo"
-                width={150}
-                height={50}
-                className="h-12 w-auto"
+                width={200}
+                height={67}
+                className="h-16 w-auto"
               />
+              <span className="font-bold text-2xl text-white">J&S PAINTERS</span>
             </div>
             
             <p className="text-gray-300 leading-relaxed max-w-md">

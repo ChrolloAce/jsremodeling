@@ -36,15 +36,16 @@ export default function Navbar() {
     >
       <div className="container flex items-center justify-between gap-6">
         {/* Logo */}
-        <Link href="/" className="flex items-center hover:opacity-80 transition-opacity">
+        <Link href="/" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
           <Image
             src="/images/logo.png"
             alt="J&S Painters Logo"
-            width={120}
-            height={40}
-            className="h-10 w-auto"
+            width={160}
+            height={53}
+            className="h-12 w-auto"
             priority
           />
+          <span className="font-bold text-xl text-white">J&S PAINTERS</span>
         </Link>
 
         {/* Desktop Navigation */}
