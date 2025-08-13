@@ -1,13 +1,10 @@
+"use client";
+
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { Check, Phone, Mail } from "lucide-react";
-import { Metadata } from "next";
 
-export const metadata: Metadata = {
-  title: "Epoxy Coating Services | J&S Painters Miami",
-  description: "Professional epoxy floor coating services in Miami. Durable, chemical-resistant coatings for garages, basements, and commercial spaces. Free estimates.",
-  keywords: ["epoxy coating Miami", "garage floor coating", "epoxy flooring", "industrial flooring", "floor coating services"]
-};
+
 
 const features = [
   "Chemical resistant coating",

@@ -1,13 +1,8 @@
+"use client";
+
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { Check, Phone, Mail } from "lucide-react";
-import { Metadata } from "next";
-
-export const metadata: Metadata = {
-  title: "Lime Base Wash Services | J&S Painters Miami",
-  description: "Professional lime base wash application in Miami. Natural lime-based wall treatments with antimicrobial properties and eco-friendly finishes.",
-  keywords: ["lime wash Miami", "lime base wash", "natural wall finishes", "eco-friendly paint", "antimicrobial walls", "breathable wall finish"]
-};
 
 const features = [
   "Natural antimicrobial properties",
