@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { Facebook, Twitter, Instagram, Linkedin, MapPin, Phone, Mail } from "lucide-react";
 
 const footerLinks = {
@@ -41,11 +42,14 @@ export default function Footer() {
         <div className="grid lg:grid-cols-5 gap-12">
           {/* Company Info */}
           <div className="lg:col-span-2 space-y-6">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
-                <span className="text-bg font-black text-lg">J&S</span>
-              </div>
-              <span className="font-bold text-2xl text-white">J&S PAINTERS</span>
+            <div className="flex items-center">
+              <Image
+                src="/images/logo.png"
+                alt="J&S Painters Logo"
+                width={150}
+                height={50}
+                className="h-12 w-auto"
+              />
             </div>
             
             <p className="text-gray-300 leading-relaxed max-w-md">

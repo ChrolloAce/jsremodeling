@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useState, useEffect } from "react";
 import { Menu, X, Phone } from "lucide-react";
 
@@ -35,11 +36,15 @@ export default function Navbar() {
     >
       <div className="container flex items-center justify-between gap-6">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-3 font-bold text-xl text-white hover:text-primary transition-colors">
-          <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-            <span className="text-white font-black text-sm">J&S</span>
-          </div>
-          J&S PAINTERS
+        <Link href="/" className="flex items-center hover:opacity-80 transition-opacity">
+          <Image
+            src="/images/logo.png"
+            alt="J&S Painters Logo"
+            width={120}
+            height={40}
+            className="h-10 w-auto"
+            priority
+          />
         </Link>
 
         {/* Desktop Navigation */}
