@@ -46,17 +46,7 @@ const services: Service[] = [
       "Durable finishes"
     ]
   },
-  {
-    id: "residential",
-    name: "Residential Painting",
-    description: "Complete home painting services from single rooms to whole house transformations.",
-    image: "/images/residential-painting.webp",
-    features: [
-      "Free color consultation",
-      "Quality materials",
-      "Clean, professional work"
-    ]
-  },
+
   {
     id: "epoxy",
     name: "Epoxy Coating",

@@ -112,7 +112,7 @@ export default function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.3 }}
             >
-              Quality Painting
+              High End Quality Painting
               <br />
               <span className="text-primary">&amp; Expert Service</span>
             </motion.h1>

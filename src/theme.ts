@@ -3,13 +3,13 @@ export const theme = {
   colors: {
     bg: "#FFFFFF",          // white page background
     surface: "#F8FAFC",     // light gray card/background
-    primary: "#2563EB",     // professional dark blue
-    primaryDark: "#1D4ED8",
+    primary: "#EA580C",     // vibrant orange
+    primaryDark: "#C2410C", // darker orange
     text: "#1E293B",        // dark text
     textMuted: "#64748B",   // muted gray text
     line: "#E2E8F0",        // light gray borders
-    accent: "#3B82F6",      // blue accent
-    success: "#10B981",
+    accent: "#16A34A",      // green accent
+    success: "#16A34A",     // green
     warning: "#F59E0B",
     dark: "#0F172A",        // dark header/footer
     darkSurface: "#1E293B", // dark surface

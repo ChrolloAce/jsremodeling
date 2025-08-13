@@ -3,6 +3,8 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { Check, Phone, Mail } from "lucide-react";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
 
 
@@ -62,6 +64,7 @@ const process = [
 export default function EpoxyCoatingPage() {
   return (
     <div className="min-h-screen">
+      <Navbar />
       {/* Hero Section */}
       <section className="relative h-[60vh] flex items-center justify-center overflow-hidden">
         <Image
@@ -257,6 +260,8 @@ export default function EpoxyCoatingPage() {
           </motion.div>
         </div>
       </section>
+
+      <Footer />
     </div>
   );
 }
