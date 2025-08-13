@@ -28,6 +28,30 @@ const projects = [
     image: "/images/exterior-painting.webp",
     duration: "1 week",
     description: "Complete exterior painting with weather-resistant coatings and professional surface preparation."
+  },
+  {
+    id: 4,
+    title: "Kitchen Cabinet Refinishing",
+    category: "Cabinet Painting",
+    image: "/images/cabinet-painting.webp",
+    duration: "3 days",
+    description: "Beautiful cabinet transformation with durable finishes and modern hardware upgrades."
+  },
+  {
+    id: 5,
+    title: "Luxury Residential Project",
+    category: "Residential",
+    image: "/images/residential-painting.webp",
+    duration: "2 weeks",
+    description: "High-end residential painting with custom colors and premium materials throughout."
+  },
+  {
+    id: 6,
+    title: "Venetian Plaster Installation",
+    category: "Specialty Finishes",
+    image: "/images/team-painter.webp",
+    duration: "1 week",
+    description: "Elegant Venetian plaster application creating luxury wall finishes with artistic textures."
   }
 ];
 

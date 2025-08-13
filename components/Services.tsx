@@ -14,25 +14,14 @@ interface Service {
 
 const services: Service[] = [
   {
-    id: "interior",
-    name: "Interior Painting",
-    description: "Transform your indoor spaces with professional interior painting services using premium paints and finishes.",
+    id: "interior-exterior",
+    name: "Interior & Exterior Painting",
+    description: "Complete painting services for both indoor and outdoor spaces with premium paints and professional application.",
     image: "/images/interior-painting.webp",
     features: [
-      "Walls, ceilings & trim",
+      "Interior & exterior surfaces",
       "Premium paint brands",
-      "Color consultation"
-    ]
-  },
-  {
-    id: "exterior",
-    name: "Exterior Painting",
-    description: "Protect and beautify your home's exterior with weather-resistant paints and expert application.",
-    image: "/images/exterior-painting.webp",
-    features: [
-      "Weather-resistant coatings",
-      "Surface preparation",
-      "Power washing included"
+      "Weather-resistant coatings"
     ]
   },
   {
@@ -69,14 +58,36 @@ const services: Service[] = [
     ]
   },
   {
-    id: "pressure-washing",
-    name: "Pressure Washing",
-    description: "Professional pressure washing services to prepare surfaces and maintain your property's appearance.",
+    id: "epoxy",
+    name: "Epoxy Coating",
+    description: "Durable epoxy floor coatings for garages, basements, and commercial spaces with long-lasting protection.",
+    image: "/images/exterior-painting.webp",
+    features: [
+      "Chemical resistant coating",
+      "Non-slip finish options",
+      "Easy maintenance"
+    ]
+  },
+  {
+    id: "venetian-plaster",
+    name: "Venetian Plaster",
+    description: "Elegant decorative wall finishes that add luxury and sophistication to any interior space.",
+    image: "/images/team-painter.webp",
+    features: [
+      "Luxury wall finishes",
+      "Custom textures",
+      "Timeless elegance"
+    ]
+  },
+  {
+    id: "lime-base-wash",
+    name: "Lime Base Wash",
+    description: "Natural lime-based wall treatments that provide beautiful, breathable finishes with antimicrobial properties.",
     image: "/images/hero-painting.webp",
     features: [
-      "Surface preparation",
-      "Mold & mildew removal",
-      "Driveway & walkway cleaning"
+      "Natural antimicrobial properties",
+      "Breathable wall finish",
+      "Eco-friendly application"
     ]
   }
 ];
