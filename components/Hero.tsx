@@ -77,8 +77,8 @@ export default function Hero() {
         transition={{ duration: 1.5, ease: "easeOut" }}
       >
         <Image
-          src="/images/hero-painting.webp"
-          alt="Professional painting services by J&S Contractor Painters Corporation"
+          src="/images/hero-luxury-home.jpg"
+          alt="Luxury home painted by J&S Contractor Painters Corporation"
           fill
           className="object-cover object-center"
           priority
