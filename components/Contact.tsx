@@ -96,20 +96,42 @@ export default function Contact() {
 
     setIsSubmitting(true);
 
-    // Simulate form submission
     try {
-      await new Promise(resolve => setTimeout(resolve, 2000));
-      setIsSubmitted(true);
-      setFormData({
-        name: "",
-        email: "",
-        phone: "",
-        serviceType: "",
-        message: "",
-        consent: false
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          phone: formData.phone,
+          email: formData.email,
+          zipCode: 'N/A', // Contact form doesn't have zip code
+          message: formData.message,
+          serviceType: formData.serviceType
+        }),
       });
+
+      if (response.ok) {
+        setIsSubmitted(true);
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          serviceType: "",
+          message: "",
+          consent: false
+        });
+      } else {
+        const errorData = await response.json();
+        console.error('Form submission failed:', response.status);
+        console.error('Error details:', errorData);
+        // You could show an error message to the user here
+        alert('❌ Something went wrong. Please try again or call us directly at (786) 298-1846.');
+      }
     } catch (error) {
       console.error("Form submission error:", error);
+      alert('❌ Something went wrong. Please try again or call us directly at (786) 298-1846.');
     } finally {
       setIsSubmitting(false);
     }
@@ -195,10 +217,10 @@ export default function Contact() {
               <div>
                 <h3 className="font-semibold text-text mb-2">Email</h3>
                 <a 
-                  href="mailto:info@jspainters.com" 
+                  href="mailto:scardonas1@aol.com" 
                   className="text-text-muted hover:text-primary transition-colors"
                 >
-                  info@jspainters.com
+                  scardonas1@aol.com
                 </a>
               </div>
             </div>
@@ -314,12 +336,13 @@ export default function Contact() {
                     } focus:outline-none`}
                   >
                     <option value="">Select a service</option>
-                    <option value="interior">Interior Painting</option>
-                    <option value="exterior">Exterior Painting</option>
-                    <option value="commercial">Commercial Painting</option>
-                    <option value="cabinet">Cabinet Painting</option>
-                    <option value="pressure-washing">Pressure Washing</option>
-                    <option value="consultation">Color Consultation</option>
+                    <option value="Interior & Exterior Painting">Interior & Exterior Painting</option>
+                    <option value="Commercial Painting">Commercial Painting</option>
+                    <option value="Cabinet Painting">Cabinet Painting</option>
+                    <option value="Epoxy">Epoxy</option>
+                    <option value="Venetian Plaster">Venetian Plaster</option>
+                    <option value="Lime Base Wash">Lime Base Wash</option>
+                    <option value="Color Consultation">Color Consultation</option>
                   </select>
                   {errors.serviceType && (
                     <p className="text-red-500 text-sm mt-1 flex items-center gap-1">

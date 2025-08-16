@@ -133,7 +133,7 @@ export async function POST(request: NextRequest) {
     // Send email using Resend with HTML template
     const { data, error } = await resend.emails.send({
       from: 'J&S Painters Website <onboarding@resend.dev>',
-      to: ['ernesto@maktubtechnologies.com'],
+      to: ['scardonas1@aol.com'],
       subject: `🎨 New Lead: ${name} - ${serviceType || 'General Inquiry'}`,
       html: createEmailHTML({
         name,
