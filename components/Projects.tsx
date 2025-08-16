@@ -2,62 +2,115 @@
 
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowRight, Calendar, X, ZoomIn } from "lucide-react";
-import { useState } from "react";
+import { ArrowRight, Calendar, X, ZoomIn, ChevronLeft, ChevronRight } from "lucide-react";
+import { useState, useRef } from "react";
 
 const projects = [
   {
     id: 1,
-    title: "Modern Miami Home Interior",
-    category: "Residential",
-    image: "/images/interior-painting.webp",
-    duration: "1 week",
-    description: "Complete interior painting transformation with premium finishes and contemporary color palette."
+    title: "Luxury Waterfront Estate",
+    category: "Exterior Painting",
+    image: "/images/hero-luxury-home.jpg",
+    duration: "3 weeks",
+    description: "Complete exterior transformation of waterfront estate with premium marine-grade finishes and modern color palette."
   },
   {
     id: 2,
-    title: "Commercial Office Building",
-    category: "Commercial",
-    image: "/images/commercial-painting.webp",
-    duration: "2 weeks",
-    description: "Professional office space painting with minimal business disruption and industrial-grade materials."
+    title: "Modern Miami Villa",
+    category: "Interior & Exterior",
+    image: "/images/project-luxury-modern-1.jpg",
+    duration: "4 weeks",
+    description: "Full interior and exterior painting of contemporary villa with clean lines and sophisticated neutral tones."
   },
   {
     id: 3,
-    title: "Exterior Home Makeover",
-    category: "Exterior",
-    image: "/images/exterior-painting.webp",
-    duration: "1 week",
-    description: "Complete exterior painting with weather-resistant coatings and professional surface preparation."
+    title: "Contemporary Pool House",
+    category: "Residential",
+    image: "/images/project-luxury-modern-2.jpg",
+    duration: "2 weeks",
+    description: "Modern pool house painting with seamless indoor-outdoor flow and weather-resistant finishes."
   },
   {
     id: 4,
-    title: "Kitchen Cabinet Refinishing",
-    category: "Cabinet Painting",
-    image: "/images/cabinet-painting.webp",
-    duration: "3 days",
-    description: "Beautiful cabinet transformation with durable finishes and modern hardware upgrades."
+    title: "Architectural Masterpiece",
+    category: "Luxury Residential",
+    image: "/images/project-luxury-modern-3.jpg",
+    duration: "5 weeks",
+    description: "High-end residential project featuring custom color matching and premium architectural finishes."
   },
   {
     id: 5,
-    title: "Luxury Residential Project",
-    category: "Residential",
-    image: "/images/residential-painting.webp",
-    duration: "2 weeks",
-    description: "High-end residential painting with custom colors and premium materials throughout."
+    title: "Miami Beach Modern Home",
+    category: "Exterior Painting",
+    image: "/images/project-luxury-modern-4.jpg",
+    duration: "3 weeks",
+    description: "Stunning modern home exterior with crisp white finishes and bold architectural details."
   },
   {
     id: 6,
-    title: "Venetian Plaster Installation",
-    category: "Specialty Finishes",
-    image: "/images/team-painter.webp",
-    duration: "1 week",
-    description: "Elegant Venetian plaster application creating luxury wall finishes with artistic textures."
+    title: "Luxury Estate Renovation",
+    category: "Interior & Exterior",
+    image: "/images/project-luxury-modern-5.jpg",
+    duration: "6 weeks",
+    description: "Complete renovation painting project with custom millwork and specialty finishes throughout."
+  },
+  {
+    id: 7,
+    title: "Contemporary Family Home",
+    category: "Residential",
+    image: "/images/project-luxury-modern-6.jpg",
+    duration: "3 weeks",
+    description: "Modern family home with warm neutral palette and durable finishes for high-traffic areas."
+  },
+  {
+    id: 8,
+    title: "Tropical Modern Villa",
+    category: "Luxury Residential",
+    image: "/images/project-luxury-modern-7.jpg",
+    duration: "4 weeks",
+    description: "Tropical modern villa featuring natural wood accents and contemporary color schemes."
+  },
+  {
+    id: 9,
+    title: "Sleek Urban Residence",
+    category: "Interior & Exterior",
+    image: "/images/project-luxury-modern-8.jpg",
+    duration: "3 weeks",
+    description: "Urban residence with sleek modern finishes and sophisticated color coordination."
+  },
+  {
+    id: 10,
+    title: "Designer Showcase Home",
+    category: "Luxury Residential",
+    image: "/images/project-luxury-modern-9.jpg",
+    duration: "4 weeks",
+    description: "Designer showcase home featuring premium finishes and meticulous attention to detail."
+  },
+  {
+    id: 11,
+    title: "Waterfront Modern Estate",
+    category: "Exterior Painting",
+    image: "/images/project-luxury-modern-10.jpg",
+    duration: "5 weeks",
+    description: "Waterfront estate with stunning modern architecture and weather-resistant luxury finishes."
   }
 ];
 
 export default function Projects() {
   const [selectedProject, setSelectedProject] = useState<typeof projects[0] | null>(null);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const carouselRef = useRef<HTMLDivElement>(null);
+
+  const nextSlide = () => {
+    setCurrentIndex((prev) => (prev + 1) % Math.ceil(projects.length / 3));
+  };
+
+  const prevSlide = () => {
+    setCurrentIndex((prev) => (prev - 1 + Math.ceil(projects.length / 3)) % Math.ceil(projects.length / 3));
+  };
+
+  // Show only first 6 projects in carousel on homepage
+  const displayProjects = projects.slice(0, 6);
 
   return (
     <div className="space-y-16">
@@ -77,18 +130,59 @@ export default function Projects() {
         </p>
       </motion.div>
 
-      {/* Projects Grid */}
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {projects.map((project, index) => (
+      {/* Projects Carousel */}
+      <div className="relative">
+        {/* Carousel Navigation */}
+        <div className="flex justify-between items-center mb-8">
+          <div className="flex gap-4">
+            <button
+              onClick={prevSlide}
+              className="w-12 h-12 bg-surface border border-line rounded-full flex items-center justify-center hover:bg-primary hover:text-white hover:border-primary transition-all group"
+            >
+              <ChevronLeft size={20} />
+            </button>
+            <button
+              onClick={nextSlide}
+              className="w-12 h-12 bg-surface border border-line rounded-full flex items-center justify-center hover:bg-primary hover:text-white hover:border-primary transition-all group"
+            >
+              <ChevronRight size={20} />
+            </button>
+          </div>
+          
+          {/* Carousel Indicators */}
+          <div className="flex gap-2">
+            {Array.from({ length: Math.ceil(displayProjects.length / 3) }).map((_, index) => (
+              <button
+                key={index}
+                onClick={() => setCurrentIndex(index)}
+                className={`w-2 h-2 rounded-full transition-all ${
+                  index === currentIndex ? 'bg-primary w-8' : 'bg-line hover:bg-text-muted'
+                }`}
+              />
+            ))}
+          </div>
+        </div>
+
+        {/* Carousel Container */}
+        <div className="overflow-hidden" ref={carouselRef}>
           <motion.div
-            key={project.id}
-            className="group cursor-pointer"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: index * 0.1 }}
-            viewport={{ once: true }}
-            onClick={() => setSelectedProject(project)}
+            className="flex"
+            animate={{ x: `-${currentIndex * 100}%` }}
+            transition={{ duration: 0.5, ease: "easeInOut" }}
           >
+            {Array.from({ length: Math.ceil(displayProjects.length / 3) }).map((_, slideIndex) => (
+              <div key={slideIndex} className="w-full flex-shrink-0">
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 px-2">
+                  {displayProjects.slice(slideIndex * 3, (slideIndex + 1) * 3).map((project, index) => (
+                    <motion.div
+                      key={project.id}
+                      className="group cursor-pointer"
+                      initial={{ opacity: 0, y: 30 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.6, delay: index * 0.1 }}
+                      viewport={{ once: true }}
+                      onClick={() => setSelectedProject(project)}
+                    >
             <div className="card overflow-hidden card-hover">
               {/* Project Image */}
               <div className="relative h-64 overflow-hidden">
@@ -139,9 +233,14 @@ export default function Projects() {
                   <ZoomIn size={16} />
                 </div>
               </div>
-            </div>
+                    </div>
+                  </motion.div>
+                  ))}
+                </div>
+              </div>
+            ))}
           </motion.div>
-        ))}
+        </div>
       </div>
 
       {/* View All Projects CTA */}
