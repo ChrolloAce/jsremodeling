@@ -25,6 +25,7 @@ function createEmailHTML(data: {
         <div style="background: #EA580C; color: white; padding: 20px; border-radius: 8px; text-align: center; margin-bottom: 20px;">
           <h1 style="margin: 0; font-size: 24px;">🎨 New Lead from J&S Painters</h1>
           <p style="margin: 10px 0 0 0; opacity: 0.9;">Someone is interested in your painting services!</p>
+          <p style="margin: 10px 0 0 0; opacity: 0.8; font-size: 14px;">📧 This lead is for: scardonas1@aol.com</p>
         </div>
         
         <div style="background: #f8f9fa; padding: 20px; border-radius: 8px; margin-bottom: 20px;">
@@ -75,7 +76,8 @@ function createEmailHTML(data: {
         
         <div style="text-align: center; color: #666; font-size: 12px; border-top: 1px solid #ddd; padding-top: 20px;">
           This lead was generated from your J&S Painters website contact form.<br>
-          Received on ${new Date().toLocaleDateString()} at ${new Date().toLocaleTimeString()}
+          Received on ${new Date().toLocaleDateString()} at ${new Date().toLocaleTimeString()}<br>
+          <strong style="color: #EA580C;">📧 Please forward this lead to: scardonas1@aol.com</strong>
         </div>
       </body>
     </html>
@@ -131,10 +133,11 @@ export async function POST(request: NextRequest) {
     console.log('🚀 Sending email via Resend...');
     
     // Send email using Resend with HTML template
+    // Note: With onboarding@resend.dev, you can only send to the email associated with your Resend account
     const { data, error } = await resend.emails.send({
       from: 'J&S Painters Website <onboarding@resend.dev>',
-      to: ['scardonas1@aol.com'],
-      subject: `🎨 New Lead: ${name} - ${serviceType || 'General Inquiry'}`,
+      to: ['ernesto@maktubtechnologies.com'], // Must match Resend account email for testing domain
+      subject: `🎨 New Lead for scardonas1@aol.com: ${name} - ${serviceType || 'General Inquiry'}`,
       html: createEmailHTML({
         name,
         phone,
