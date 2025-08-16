@@ -50,7 +50,7 @@ export default function Footer() {
                 height={67}
                 className="h-16 w-auto"
               />
-              <span className="font-bold text-2xl text-white">J&S PAINTERS</span>
+              <span className="font-bold text-2xl text-white">J&S CONTRACTOR AND PAINTERS</span>
             </div>
             
             <p className="text-gray-300 leading-relaxed max-w-md">

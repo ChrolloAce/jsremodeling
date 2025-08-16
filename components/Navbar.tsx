@@ -45,7 +45,7 @@ export default function Navbar() {
             className="h-12 w-auto"
             priority
           />
-          <span className="font-bold text-xl text-white">J&S PAINTERS</span>
+          <span className="font-bold text-xl text-white">J&S CONTRACTOR AND PAINTERS</span>
         </Link>
 
         {/* Desktop Navigation */}

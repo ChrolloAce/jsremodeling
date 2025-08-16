@@ -1,8 +1,9 @@
 "use client";
 
 import Image from "next/image";
-import { motion } from "framer-motion";
-import { ArrowRight, Calendar } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { ArrowRight, Calendar, X, ZoomIn } from "lucide-react";
+import { useState } from "react";
 
 const projects = [
   {
@@ -56,6 +57,8 @@ const projects = [
 ];
 
 export default function Projects() {
+  const [selectedProject, setSelectedProject] = useState<typeof projects[0] | null>(null);
+
   return (
     <div className="space-y-16">
       {/* Section Header */}
@@ -84,6 +87,7 @@ export default function Projects() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: index * 0.1 }}
             viewport={{ once: true }}
+            onClick={() => setSelectedProject(project)}
           >
             <div className="card overflow-hidden card-hover">
               {/* Project Image */}
@@ -96,6 +100,13 @@ export default function Projects() {
                   sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-bg/60 to-transparent" />
+                
+                {/* Zoom Icon */}
+                <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity">
+                  <div className="bg-primary/90 backdrop-blur-sm rounded-full p-2">
+                    <ZoomIn size={16} className="text-white" />
+                  </div>
+                </div>
                 
                 {/* Category Badge */}
                 <div className="absolute top-4 left-4">
@@ -124,8 +135,8 @@ export default function Projects() {
 
                 {/* View Details Link */}
                 <div className="flex items-center gap-2 text-primary font-medium group-hover:gap-3 transition-all">
-                  <span>View Details</span>
-                  <ArrowRight size={16} />
+                  <span>Click to View</span>
+                  <ZoomIn size={16} />
                 </div>
               </div>
             </div>
@@ -146,6 +157,91 @@ export default function Projects() {
           <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
         </a>
       </motion.div>
+
+      {/* Project Modal */}
+      <AnimatePresence>
+        {selectedProject && (
+          <motion.div
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-dark/90 backdrop-blur-sm"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setSelectedProject(null)}
+          >
+            <motion.div
+              className="relative max-w-4xl w-full max-h-[90vh] overflow-y-auto bg-surface rounded-lg shadow-2xl"
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.8, opacity: 0 }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Close Button */}
+              <button
+                onClick={() => setSelectedProject(null)}
+                className="absolute top-4 right-4 z-10 bg-dark/80 hover:bg-dark text-white rounded-full p-2 transition-colors"
+              >
+                <X size={20} />
+              </button>
+
+              {/* Project Image */}
+              <div className="relative h-96 md:h-[500px] overflow-hidden rounded-t-lg">
+                <Image
+                  src={selectedProject.image}
+                  alt={selectedProject.title}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 80vw"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-dark/60 to-transparent" />
+                
+                {/* Category Badge */}
+                <div className="absolute bottom-4 left-4">
+                  <span className="badge bg-primary text-white">
+                    {selectedProject.category}
+                  </span>
+                </div>
+              </div>
+
+              {/* Project Details */}
+              <div className="p-8 space-y-6">
+                <div>
+                  <h3 className="text-3xl font-bold text-text mb-2">
+                    {selectedProject.title}
+                  </h3>
+                  <p className="text-text-muted text-lg leading-relaxed">
+                    {selectedProject.description}
+                  </p>
+                </div>
+
+                {/* Project Stats */}
+                <div className="flex items-center gap-4 text-text-muted">
+                  <div className="flex items-center gap-2">
+                    <Calendar size={18} />
+                    <span className="font-medium">{selectedProject.duration}</span>
+                  </div>
+                </div>
+
+                {/* Contact CTA */}
+                <div className="flex flex-col sm:flex-row gap-4 pt-4 border-t border-line">
+                  <a
+                    href="tel:(786) 298-1846"
+                    className="btn btn-primary flex-1 justify-center"
+                  >
+                    Get Similar Quote
+                  </a>
+                  <a
+                    href="#contact"
+                    className="btn btn-ghost flex-1 justify-center"
+                    onClick={() => setSelectedProject(null)}
+                  >
+                    Request Consultation
+                  </a>
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
