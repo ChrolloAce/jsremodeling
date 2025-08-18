@@ -17,7 +17,7 @@ const services: Service[] = [
     id: "interior-exterior",
     name: "Interior & Exterior Painting",
     description: "Complete painting services for both indoor and outdoor spaces with premium paints and professional application.",
-    image: "/images/interior-painting.webp",
+    image: "/images/project-luxury-modern-2.jpg",
     features: [
       "Interior & exterior surfaces",
       "Premium paint brands",
@@ -28,7 +28,7 @@ const services: Service[] = [
     id: "commercial",
     name: "Commercial Painting",
     description: "Professional painting services for offices, retail spaces, and commercial buildings.",
-    image: "/images/commercial-painting.webp",
+    image: "/images/project-luxury-modern-8.jpg",
     features: [
       "Minimal business disruption",
       "Industrial-grade paints",
@@ -39,7 +39,7 @@ const services: Service[] = [
     id: "cabinet",
     name: "Cabinet Painting",
     description: "Refresh your kitchen or bathroom cabinets with professional painting and refinishing services.",
-    image: "/images/cabinet-painting.webp",
+    image: "/images/project-luxury-modern-5.jpg",
     features: [
       "Cabinet refinishing",
       "Hardware replacement",
@@ -51,7 +51,7 @@ const services: Service[] = [
     id: "epoxy",
     name: "Epoxy Coating",
     description: "Durable epoxy floor coatings for garages, basements, and commercial spaces with long-lasting protection.",
-    image: "/images/exterior-painting.webp",
+    image: "/images/project-luxury-modern-10.jpg",
     features: [
       "Chemical resistant coating",
       "Non-slip finish options",
@@ -62,7 +62,7 @@ const services: Service[] = [
     id: "venetian-plaster",
     name: "Venetian Plaster",
     description: "Elegant decorative wall finishes that add luxury and sophistication to any interior space.",
-    image: "/images/team-painter.webp",
+    image: "/images/project-luxury-modern-6.jpg",
     features: [
       "Luxury wall finishes",
       "Custom textures",
@@ -73,7 +73,7 @@ const services: Service[] = [
     id: "lime-base-wash",
     name: "Lime Base Wash",
     description: "Natural lime-based wall treatments that provide beautiful, breathable finishes with antimicrobial properties.",
-    image: "/images/hero-painting.webp",
+    image: "/images/project-luxury-modern-11.jpg",
     features: [
       "Natural antimicrobial properties",
       "Breathable wall finish",

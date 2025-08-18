@@ -7,21 +7,19 @@ import { Facebook, Twitter, Instagram, Linkedin, MapPin, Phone, Mail } from "luc
 const footerLinks = {
   company: [
     { label: "About Us", href: "/about" },
-    { label: "Our Team", href: "/team" },
-    { label: "Service Areas", href: "/areas" },
-    { label: "Reviews", href: "/reviews" }
+    { label: "Reviews", href: "#testimonials" }
   ],
   services: [
-    { label: "Interior Painting", href: "/services/interior" },
-    { label: "Exterior Painting", href: "/services/exterior" },
+    { label: "Interior & Exterior", href: "/services/interior-exterior" },
     { label: "Commercial Painting", href: "/services/commercial" },
-    { label: "Cabinet Painting", href: "/services/cabinet" }
+    { label: "Cabinet Painting", href: "/services/cabinet" },
+    { label: "Epoxy", href: "/services/epoxy" },
+    { label: "Venetian Plaster", href: "/services/venetian-plaster" },
+    { label: "Lime Base Wash", href: "/services/lime-base-wash" }
   ],
   resources: [
     { label: "Project Gallery", href: "/projects" },
-    { label: "Color Consultation", href: "/consultation" },
-    { label: "Free Estimates", href: "/estimate" },
-    { label: "Painting Tips", href: "/tips" }
+    { label: "Free Estimates", href: "#contact" }
   ]
 };
 
@@ -72,8 +70,8 @@ export default function Footer() {
               </div>
               <div className="flex items-center gap-3 text-gray-300">
                 <Mail size={16} className="text-primary flex-shrink-0" />
-                <a href="mailto:info@jspainters.com" className="text-sm hover:text-primary transition-colors">
-                  info@jspainters.com
+                <a href="mailto:scardonas1@aol.com" className="text-sm hover:text-primary transition-colors">
+                  scardonas1@aol.com
                 </a>
               </div>
             </div>
@@ -160,15 +158,12 @@ export default function Footer() {
             </div>
             
             <div className="flex gap-6 text-sm">
-              <Link href="/privacy" className="text-gray-400 hover:text-primary transition-colors">
-                Privacy Policy
-              </Link>
-              <Link href="/terms" className="text-gray-400 hover:text-primary transition-colors">
-                Terms of Service
-              </Link>
-              <Link href="/sitemap" className="text-gray-400 hover:text-primary transition-colors">
-                Sitemap
-              </Link>
+              <a href="tel:(786) 298-1846" className="text-gray-400 hover:text-primary transition-colors">
+                Call Now
+              </a>
+              <a href="#contact" className="text-gray-400 hover:text-primary transition-colors">
+                Get Quote
+              </a>
             </div>
           </div>
         </div>

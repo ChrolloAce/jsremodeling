@@ -98,8 +98,8 @@ export default function WhyChooseUs() {
         >
           <div className="relative h-[500px] md:h-[600px] rounded-2xl overflow-hidden">
             <Image
-              src="/images/commercial-painting.webp"
-              alt="Commercial painting project in progress"
+              src="/images/project-luxury-modern-12.jpg"
+              alt="Luxury painting project showcasing professional results"
               fill
               className="object-cover"
               sizes="(max-width: 768px) 100vw, 50vw"
