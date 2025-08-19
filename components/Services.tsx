@@ -51,7 +51,7 @@ const services: Service[] = [
     id: "epoxy",
     name: "Epoxy Coating",
     description: "Durable epoxy floor coatings for garages, basements, and commercial spaces with long-lasting protection.",
-    image: "/images/project-luxury-modern-10.jpg",
+    image: "/images/epoxy-coating.jpg",
     features: [
       "Chemical resistant coating",
       "Non-slip finish options",
@@ -62,7 +62,7 @@ const services: Service[] = [
     id: "venetian-plaster",
     name: "Venetian Plaster",
     description: "Elegant decorative wall finishes that add luxury and sophistication to any interior space.",
-    image: "/images/project-luxury-modern-6.jpg",
+    image: "/images/venetian-plaster.jpg",
     features: [
       "Luxury wall finishes",
       "Custom textures",
@@ -73,7 +73,7 @@ const services: Service[] = [
     id: "lime-base-wash",
     name: "Lime Base Wash",
     description: "Natural lime-based wall treatments that provide beautiful, breathable finishes with antimicrobial properties.",
-    image: "/images/project-luxury-modern-11.jpg",
+    image: "/images/lime-base-wash.jpg",
     features: [
       "Natural antimicrobial properties",
       "Breathable wall finish",
