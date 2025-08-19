@@ -68,7 +68,7 @@ export default function EpoxyCoatingPage() {
       {/* Hero Section */}
       <section className="relative h-[60vh] flex items-center justify-center overflow-hidden">
         <Image
-          src="/images/exterior-painting.webp"
+          src="/images/epoxy-coating.jpg"
           alt="Epoxy Coating Services"
           fill
           className="object-cover"
@@ -144,7 +144,7 @@ export default function EpoxyCoatingPage() {
               viewport={{ once: true }}
             >
               <Image
-                src="/images/commercial-painting.webp"
+                src="/images/epoxy-coating.jpg"
                 alt="Epoxy coating application"
                 width={600}
                 height={600}

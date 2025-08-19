@@ -66,7 +66,7 @@ export default function LimeBaseWashPage() {
       {/* Hero Section */}
       <section className="relative h-[60vh] flex items-center justify-center overflow-hidden">
         <Image
-          src="/images/hero-painting.webp"
+          src="/images/lime-base-wash.jpg"
           alt="Lime Base Wash Services"
           fill
           className="object-cover"
@@ -142,7 +142,7 @@ export default function LimeBaseWashPage() {
               viewport={{ once: true }}
             >
               <Image
-                src="/images/residential-painting.webp"
+                src="/images/lime-base-wash.jpg"
                 alt="Lime base wash application"
                 width={600}
                 height={600}

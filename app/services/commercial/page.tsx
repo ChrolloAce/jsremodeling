@@ -59,7 +59,7 @@ export default function CommercialPaintingPage() {
       <section className="relative min-h-[60vh] flex items-center">
         <div className="absolute inset-0">
           <Image
-            src="/images/commercial-painting.webp"
+            src="/images/project-luxury-modern-8.jpg"
             alt="Professional commercial painting service"
             fill
             className="object-cover"
@@ -154,7 +154,7 @@ export default function CommercialPaintingPage() {
               >
                 <div className="relative h-[500px] rounded-2xl overflow-hidden">
                   <Image
-                    src="/images/interior-painting.webp"
+                    src="/images/project-luxury-modern-8.jpg"
                     alt="Commercial painting work in progress"
                     fill
                     className="object-cover"

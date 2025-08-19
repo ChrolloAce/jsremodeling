@@ -59,7 +59,7 @@ export default function CabinetPaintingPage() {
       <section className="relative min-h-[60vh] flex items-center">
         <div className="absolute inset-0">
           <Image
-            src="/images/cabinet-painting.webp"
+            src="/images/project-luxury-modern-5.jpg"
             alt="Professional cabinet painting service"
             fill
             className="object-cover"
@@ -154,7 +154,7 @@ export default function CabinetPaintingPage() {
               >
                 <div className="relative h-[500px] rounded-2xl overflow-hidden">
                   <Image
-                    src="/images/residential-painting.webp"
+                    src="/images/project-luxury-modern-5.jpg"
                     alt="Cabinet painting transformation"
                     fill
                     className="object-cover"

@@ -66,7 +66,7 @@ export default function InteriorExteriorPaintingPage() {
       {/* Hero Section */}
       <section className="relative h-[60vh] flex items-center justify-center overflow-hidden">
         <Image
-          src="/images/interior-painting.webp"
+          src="/images/project-luxury-modern-2.jpg"
           alt="Interior and Exterior Painting Services"
           fill
           className="object-cover"
@@ -142,7 +142,7 @@ export default function InteriorExteriorPaintingPage() {
               viewport={{ once: true }}
             >
               <Image
-                src="/images/exterior-painting.webp"
+                src="/images/project-luxury-modern-1.jpg"
                 alt="Professional painting services"
                 width={600}
                 height={600}

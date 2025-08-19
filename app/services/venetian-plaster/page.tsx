@@ -66,7 +66,7 @@ export default function VenetianPlasterPage() {
       {/* Hero Section */}
       <section className="relative h-[60vh] flex items-center justify-center overflow-hidden">
         <Image
-          src="/images/team-painter.webp"
+          src="/images/venetian-plaster.jpg"
           alt="Venetian Plaster Services"
           fill
           className="object-cover"
@@ -142,7 +142,7 @@ export default function VenetianPlasterPage() {
               viewport={{ once: true }}
             >
               <Image
-                src="/images/interior-painting.webp"
+                src="/images/venetian-plaster.jpg"
                 alt="Venetian plaster application"
                 width={600}
                 height={600}
