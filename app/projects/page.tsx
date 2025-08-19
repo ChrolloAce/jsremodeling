@@ -330,7 +330,7 @@ export default function ProjectsPage() {
                       Get Similar Quote
                     </a>
                     <a
-                      href="#contact"
+                      href="/#contact"
                       className="btn btn-ghost flex-1 justify-center"
                       onClick={() => setSelectedProject(null)}
                     >

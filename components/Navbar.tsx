@@ -18,12 +18,12 @@ export default function Navbar() {
   }, []);
 
   const navLinks = [
-    { href: "#services", label: "Services" },
-    { href: "#projects", label: "Projects" },
-    { href: "#process", label: "Process" },
+    { href: "/#services", label: "Services" },
+    { href: "/projects", label: "Projects" },
+    { href: "/#process", label: "Process" },
     { href: "/about", label: "About" },
-    { href: "#testimonials", label: "Reviews" },
-    { href: "#contact", label: "Contact" },
+    { href: "/#testimonials", label: "Reviews" },
+    { href: "/#contact", label: "Contact" },
   ];
 
   return (
@@ -71,7 +71,7 @@ export default function Navbar() {
             <Phone size={16} />
             (786) 298-1846
           </a>
-          <a href="#contact" className="btn btn-primary">
+          <a href="/#contact" className="btn btn-primary">
             Get a Quote
           </a>
         </div>
@@ -111,7 +111,7 @@ export default function Navbar() {
                 (786) 298-1846
               </a>
               <a 
-                href="#contact" 
+                href="/#contact" 
                 className="btn btn-primary justify-center"
                 onClick={() => setMobileMenuOpen(false)}
               >
